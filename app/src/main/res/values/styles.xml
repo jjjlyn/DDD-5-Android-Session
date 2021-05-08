@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.Button.DDD" parent="Widget.MaterialComponents.Button">
+<!--        적용 유무의 차이가 있다.-->
+<!--        <item name="android:textColor">@android:color/holo_blue_bright</item>-->
+    </style>
+</resources>

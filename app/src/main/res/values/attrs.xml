@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DDDSlider">
+        <attr name="android:value"/>
+        <attr name="android:valueFrom"/>
+        <attr name="android:valueTo"/>
+        <attr name="values" format="reference"/>
+        <attr name="android:enabled"/>
+        <attr name="android:stepSize"/>
+        <attr name="thumbColor" format="color" />
+        <attr name="thumbStrokeColor" format="color"/>
+        <attr name="thumbStrokeWidth" format="dimension" />
+        <attr name="thumbRadius" format="dimension"/>
+        <attr name="trackColor" format="color"/>
+        <attr name="trackColorActive" format="color" />
+        <attr name="trackColorInActive" format="color" />
+        <attr name="tickVisible" format="boolean"/>
+        <attr name="tickColor" format="color" />
+        <attr name="tickColorActive" format="color"/>
+        <attr name="tickColorInactive" format="color"/>
+        <attr name="trackHeight" format="dimension"/>
+        <attr name="labelStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="DDDButton">
+        <attr name="android:textColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="DDDProgressBar">
+        <attr name="strokeColor" format="color|reference"/>
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="progress" format="float"/>
+        <attr name="progressBarForeground" format="color|reference"/>
+        <attr name="progressBarBackground" format="color|reference"/>
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+        <attr name="android:radius"/>
+    </declare-styleable>
+</resources>
