@@ -1,6 +1,5 @@
 package com.ddd.android.session
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
@@ -19,5 +18,6 @@ class MainActivity : AppCompatActivity() {
         println("defStyleResTextColor: $defStyleResTextColor")
         println("darkGray: $darkGray")
 
+        findViewById<DDDProgressBar>(R.id.progressBar).display()
     }
 }

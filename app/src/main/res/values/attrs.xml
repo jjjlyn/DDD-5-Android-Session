@@ -35,5 +35,10 @@
         <attr name="android:layout_width"/>
         <attr name="android:layout_height"/>
         <attr name="android:radius"/>
+        <attr name="progressAnimation" format="enum">
+            <enum name="none" value="0" />
+            <enum name="fade" value="1" />
+            <enum name="scale" value="2" />
+        </attr>
     </declare-styleable>
 </resources>
