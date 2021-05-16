@@ -1,6 +1,7 @@
 package com.ddd.android.session
 
 import android.os.Bundle
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         println("defStyleResTextColor: $defStyleResTextColor")
         println("darkGray: $darkGray")
 
-        findViewById<DDDProgressBar>(R.id.progressBar).display()
+        findViewById<DDDProgressBar>(R.id.progressBarFirst).display()
+        findViewById<DDDProgressBar>(R.id.progressBarSecond).display()
+        findViewById<DDDProgressBar>(R.id.progressBarThird).display()
     }
 }

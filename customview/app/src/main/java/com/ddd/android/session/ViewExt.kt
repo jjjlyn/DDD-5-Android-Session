@@ -5,7 +5,6 @@ import android.content.res.Resources
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
-import android.widget.FrameLayout
 import androidx.annotation.Dimension
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager

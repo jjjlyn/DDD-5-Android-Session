@@ -78,6 +78,7 @@ class DDDProgressBar : FrameLayout {
             DDDProgressBarAnimation.NONE.value -> this.progressAnimation = DDDProgressBarAnimation.NONE
             DDDProgressBarAnimation.FADE.value -> this.progressAnimation = DDDProgressBarAnimation.FADE
             DDDProgressBarAnimation.SCALE.value -> this.progressAnimation = DDDProgressBarAnimation.SCALE
+            DDDProgressBarAnimation.FLOAT_SCALE.value -> this.progressAnimation = DDDProgressBarAnimation.FLOAT_SCALE
         }
         a.recycle()
     }
@@ -113,7 +114,7 @@ class DDDProgressBar : FrameLayout {
     private fun updateProgress() {
         with(progressView) {
             background = GradientDrawable().apply {
-                cornerRadius = radius
+                cornerRadius = radius / 2
                 setColor(progressForegroundColor)
             }
         }
@@ -125,26 +126,18 @@ class DDDProgressBar : FrameLayout {
         invalidate()
     }
 
-    private fun updateAnimations(){
-        when(progressAnimation){
-            DDDProgressBarAnimation.SCALE -> {
-                progressView.scaleX = 0f
-                progressView.scaleY = 0f
-            }
-            DDDProgressBarAnimation.FADE -> {
-                progressView.scaleX = 1f
-                progressView.scaleY = 1f
-            }
-            else -> {
-                progressView.scaleX = 1f
-                progressView.scaleY = 1f
-            }
-        }
+    private fun updateAnimations() {
+//        when(progressAnimation){
+//            DDDProgressBarAnimation.FLOAT_SCALE -> {
+//                scaleX = 0f
+//                scaleY = 0f
+//            }
+//        }
     }
 
     /** updates layout width params. */
-    private fun updateWidthParams(value: Int) {
-        progressView.updateLayoutParams {
+    private fun View.updateWidthParams(value: Int) {
+        this.updateLayoutParams {
             width = value
         }
     }
@@ -160,40 +153,40 @@ class DDDProgressBar : FrameLayout {
             DDDProgressBarAnimation.FADE -> {
                 addView(progressView, progressCurrentWidth, progressHeight)
             }
+            DDDProgressBarAnimation.FLOAT_SCALE -> {
+                addView(progressView, 0, progressHeight)
+            }
             DDDProgressBarAnimation.NONE -> {
-
+                addView(progressView, progressCurrentWidth, progressHeight)
             }
         }
     }
 
     fun display(){
         when(progressAnimation){
-            DDDProgressBarAnimation.SCALE -> {
-                progressView.animateScale(1.0f, 1.0f, 150L)
-                    .doAfterAnimate { autoNavigate() }
-            }
-            DDDProgressBarAnimation.FADE -> {
-                progressView.animateScale(1.0f, 1.0f, 150L)
-                    .doAfterAnimate { autoNavigate() }
-            }
-            DDDProgressBarAnimation.NONE -> autoNavigate()
+            DDDProgressBarAnimation.NONE -> { }
+            else -> post { autoNavigate() }
         }
     }
 
     private fun autoNavigate() {
         val progressTotalWidth = progressBarWidth - borderSize * 2
         val progressCurrentWidth = (progressTotalWidth * progress).toInt()
-        beginDelayedTransition(500L)
+        beginDelayedTransition(3000L)
         when(progressAnimation){
             DDDProgressBarAnimation.SCALE -> {
-                updateWidthParams(progressCurrentWidth)
+                progressView.updateWidthParams(progressCurrentWidth)
             }
             DDDProgressBarAnimation.FADE -> {
-                updateWidthParams(0)
+                progressView.updateWidthParams(0)
             }
-            DDDProgressBarAnimation.NONE -> {
-
+            DDDProgressBarAnimation.FLOAT_SCALE -> {
+                updateLayoutParams {
+                    width = 280.dp().toInt()
+                }
+                progressView.updateWidthParams((280.dp().toInt() * progress).toInt())
             }
+            DDDProgressBarAnimation.NONE -> { }
         }
     }
 }
